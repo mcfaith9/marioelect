@@ -6,7 +6,7 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <title>TEAM MARIO | Project MARIO</title>
     <!-- Favicon-->
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="{{asset('super-mario.png')}}" type="image/x-icon">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
@@ -207,39 +207,21 @@
         <aside id="leftsidebar" class="sidebar">
             <!-- User Info -->
             <div class="user-info">
-                <div class="image">
-                    <img src="images/user.png" width="48" height="48" alt="User" />
-                </div>
-                <div class="info-container">
-                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">John Doe</div>
-                    <div class="email">john.doe@example.com</div>
-                    <div class="btn-group user-helper-dropdown">
-                        <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
-                        <ul class="dropdown-menu pull-right">
-                            <li><a href="javascript:void(0);"><i class="material-icons">person</i>Profile</a></li>
-                            <li role="seperator" class="divider"></li>
-                            <li><a href="javascript:void(0);"><i class="material-icons">group</i>Followers</a></li>
-                            <li><a href="javascript:void(0);"><i class="material-icons">shopping_cart</i>Sales</a></li>
-                            <li><a href="javascript:void(0);"><i class="material-icons">favorite</i>Likes</a></li>
-                            <li role="seperator" class="divider"></li>
-                            <li><a href="javascript:void(0);"><i class="material-icons">input</i>Sign Out</a></li>
-                        </ul>
-                    </div>
-                </div>
+                <img src="{{asset('teammario.png')}}" style="width: 252px; margin: -18px 0px;">
             </div>
             <!-- #User Info -->
             <!-- Menu -->
             <div class="menu">
                 <ul class="list">
-                    <li class="header">MAIN NAVIGATION</li>
-                    <li>
+                    <li class="header">NAVIGATE</li>
+                    <li class="active">
                         <a data-toggle="modal" data-target="#exampleModal">
                             <i class="material-icons">person_add</i>
                             <span>Add Voters</span>
                         </a>
                     </li>
                     <li class="active">
-                        <a href="javascript:void(0);" class="menu-toggle">
+                        <a href="javascript:void(0);">
                             <i class="material-icons">view_list</i>
                             <span>Tables</span>
                         </a>
@@ -250,7 +232,7 @@
             <!-- Footer -->
             <div class="legal">
                 <div class="copyright">
-                    &copy; 2018 <a href="javascript:void(0);">Mcfaith - https://facebook.com/mcfaith</a>.
+                    &copy; 2018 <a href="https://facebook.com/mcfaith">Mcfaith</a>.
                 </div>
                 <div class="version">
                     <b>Version: </b> 1.0.5
@@ -259,65 +241,6 @@
             <!-- #Footer -->
         </aside>
         <!-- #END# Left Sidebar -->
-        <!-- Right Sidebar -->
-        <aside id="rightsidebar" class="right-sidebar">
-            <ul class="nav nav-tabs tab-nav-right" role="tablist">
-                <li role="presentation" class="active"><a href="#skins" data-toggle="tab">SKINS</a></li>
-                <li role="presentation"><a href="#settings" data-toggle="tab">SETTINGS</a></li>
-            </ul>
-            <div class="tab-content">                
-                <div role="tabpanel" class="tab-pane fade" id="settings">
-                    <div class="demo-settings">
-                        <p>GENERAL SETTINGS</p>
-                        <ul class="setting-list">
-                            <li>
-                                <span>Report Panel Usage</span>
-                                <div class="switch">
-                                    <label><input type="checkbox" checked><span class="lever"></span></label>
-                                </div>
-                            </li>
-                            <li>
-                                <span>Email Redirect</span>
-                                <div class="switch">
-                                    <label><input type="checkbox"><span class="lever"></span></label>
-                                </div>
-                            </li>
-                        </ul>
-                        <p>SYSTEM SETTINGS</p>
-                        <ul class="setting-list">
-                            <li>
-                                <span>Notifications</span>
-                                <div class="switch">
-                                    <label><input type="checkbox" checked><span class="lever"></span></label>
-                                </div>
-                            </li>
-                            <li>
-                                <span>Auto Updates</span>
-                                <div class="switch">
-                                    <label><input type="checkbox" checked><span class="lever"></span></label>
-                                </div>
-                            </li>
-                        </ul>
-                        <p>ACCOUNT SETTINGS</p>
-                        <ul class="setting-list">
-                            <li>
-                                <span>Offline</span>
-                                <div class="switch">
-                                    <label><input type="checkbox"><span class="lever"></span></label>
-                                </div>
-                            </li>
-                            <li>
-                                <span>Location Permission</span>
-                                <div class="switch">
-                                    <label><input type="checkbox" checked><span class="lever"></span></label>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </aside>
-        <!-- #END# Right Sidebar -->
     </section>
 
     <section class="content">
@@ -331,7 +254,7 @@
                                 LIST OF VOTERS
                             </h2>
                         </div>
-                        <div class="body">
+                        <div class="body" style="padding: 10px; font-size: 12px">
                             <div class="table-responsive">
                                 <table class="table table-bordered table-striped table-hover dataTable js-exportable" id="voter-table">
                                     <thead>
@@ -402,6 +325,8 @@
 
     <script type="text/javascript">
 
+
+
     $('#add-voter').click(function(e){
     var data_form = new FormData($('#add-voter-form')[0]);
     var form = document.getElementById('add-voter-form');
@@ -432,15 +357,16 @@
          destroy:    true,
          processing: true,
          serverSide: true,
+         responsive: true,
          select: true,
-         ajax: '{{ url("/getvoter") }}',
+         ajax: '{{ url("/getvoter") }}',         
          columns: [
-             {data: 'lname',    "className": "text-center"},
-             {data: 'fname',    "className": "text-center"},             
-             {data: 'mname',    "className": "text-center"},
-             {data: 'address',  "className": "text-center"},            
-             {data: 'precnum',  "className": "text-center"},  
-             {data: 'legend',   "className": "text-center"},
+             {data: 'lname'},
+             {data: 'fname'},             
+             {data: 'mname'},
+             {data: 'address'},            
+             {data: 'precnum'},  
+             {data: 'legend'},
          ]
      });
 
