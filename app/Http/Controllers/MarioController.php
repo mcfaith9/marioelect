@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Voter;
 use Validator;
+use Datatables;
 class MarioController extends Controller
 {
     public function addVoter(Request $request){
@@ -17,7 +18,7 @@ class MarioController extends Controller
     	         'precinct' => 'required',
     	         'legend'  => 'required',
     	     ]);
-    	     
+
     	  if($validator->passes()) {    	  	
     	  	$add          = new Voter;
     	  	$add->lname   = $request->lastname;
@@ -32,5 +33,10 @@ class MarioController extends Controller
     	  	$message = 'error';
     	  	return response()->json(['error'=>$message]);
     	  }
+    }
+
+    public function getVoter(Request $request){
+    	$getvoter = Voter::all(); 
+    	return Datatables::of($getvoter)->make(true);
     }
 }

@@ -16,3 +16,4 @@ Route::get('/', function () {
 });
 
 Route::post('/addvoter', ['uses' => 'MarioController@addVoter']);
+Route::get('/getvoter',  ['uses' => 'MarioController@getVoter']);
