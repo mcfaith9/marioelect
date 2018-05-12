@@ -362,6 +362,7 @@
          ajax: '{{ url("/getvoter") }}',
          dom: 'Bfrtip',
              buttons: [
+                 'excel',
                  'print'
              ],
          columns: [
