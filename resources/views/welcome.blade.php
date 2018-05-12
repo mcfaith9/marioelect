@@ -359,7 +359,11 @@
          serverSide: true,
          responsive: true,
          select: true,
-         ajax: '{{ url("/getvoter") }}',         
+         ajax: '{{ url("/getvoter") }}',
+         dom: 'Bfrtip',
+             buttons: [
+                 'print'
+             ],
          columns: [
              {data: 'lname'},
              {data: 'fname'},             
