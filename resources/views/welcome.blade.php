@@ -95,7 +95,7 @@
 
 <div class="row clearfix" style="margin-bottom: 30px;">
 <div class="col-md-12">
-<select class="form-control show-tick" name="address">
+<select class="form-control show-tick" name="address" id="a">
 <option value="">-- Please Select Address --</option>                                
 <option value="ALIMANGO">ALIMANGO</option>
 <option value="APID">APID</option>
@@ -122,15 +122,25 @@
 
 <div class="row clearfix">
 <div class="col-md-6">
-<select class="form-control show-tick" name="precinct">
+<select class="form-control show-tick" name="precinct" id="b">
 <option value="">-- Please Select Precinct --</option>                                
-<option value="0080A PCVL">0080A PCVL</option>
+<!-- <option value="0080A PCVL">0080A PCVL</option>
 <option value="0080B PCVL">0080B PCVL</option>
+<option value="0081A PCVL">0081A PCVL</option>
+<option value="0081B PCVL">0081B PCVL</option> -->
+<option value="0081A PCVL">0081A PCVL</option>
+<option value="0081C PCVL">0081C PCVL</option>
+<option value="0081B PCVL">0081B PCVL</option>
+<option value="0082C PCVL">0082C PCVL</option>
+<option value="0082D PCVL">0082D PCVL</option>
+<option value="0083A PCVL">0083A PCVL</option>
+<option value="0083B PCVL">0083B PCVL</option>
+<option value="0083C PCVL">0083C PCVL</option>
 </select>
 </div>
 
 <div class="col-sm-6">
-<select class="form-control show-tick" name="legend">
+<select class="form-control show-tick" name="legend" id="c">
 <option value="">-- Please select --</option>                                
 <option value="18-30">18-30</option>
 <option value="Illiterate">Illiterate</option>
@@ -343,6 +353,9 @@
             success: function(data) {
                 if($.isEmptyObject(data.error)){
                     form.reset();
+                    $('#a').prop('selectedIndex',-1);
+                    $('#b').prop('selectedIndex',-1);
+                    $('#c').prop('selectedIndex',-1);
                 }else{
                     console.log('error');
                 }
